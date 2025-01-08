@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: express_backend
+    ports:
+      - "5001:5000"
+    environment:
+      - MONGO_URI=mongodb://antoine:antoinelecrack12345@mongodb:27017/dbtest
+    networks:
+      - back
+      - front
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: vue_frontend
+    ports:
+      - "8080:80"
+    networks:
+      - front
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=antoine
+      - MONGO_INITDB_ROOT_PASSWORD=antoinelecrack12345
+      - MONGO_INITDB_DATABASE=dbtest
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - back
+
+volumes:
+  mongo_data:
+
+networks:
+  front:
+  back:
