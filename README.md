@@ -21,8 +21,8 @@ Consultez les liens suivants pour les installer si nécessaire :
 Clonez ce repository sur votre machine locale :
 
 ```bash
-git clone <URL_DU_REPOSITORY>
-cd <NOM_DU_REPOSITORY>
+git clone https://github.com/MasiaAntoine/docker-projet-livecampus
+cd docker-projet-livecampus
 ```
 
 ### 2. Configuration des ports
